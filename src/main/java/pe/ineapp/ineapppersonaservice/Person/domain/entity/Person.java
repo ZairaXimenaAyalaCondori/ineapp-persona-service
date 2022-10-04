@@ -1,7 +1,10 @@
-package pe.ineapp.ineapppersonaservice.Person;
+package pe.ineapp.ineapppersonaservice.Person.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,11 +13,13 @@ import java.time.LocalDate;
         name="tbl_person",
         uniqueConstraints = {
                 @UniqueConstraint(name="person_email_unique", columnNames = "email"),
-                @UniqueConstraint(name="person_email_unique", columnNames = "dni"),
+                @UniqueConstraint(name="person_dni_unique", columnNames = "dni"),
         }
 )
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Person {
 
     @SequenceGenerator(
@@ -34,5 +39,6 @@ public class Person {
     String dni;
     String email;
     LocalDate birthDate;
+
 }
 
